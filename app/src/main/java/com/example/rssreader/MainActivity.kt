@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.*
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import com.example.rssreader.ui.theme.UserManagementTheme
 
