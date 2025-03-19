@@ -16,7 +16,16 @@ import com.squareup.picasso.Picasso
 @Composable
 fun UserListScreen(navController: NavHostController, viewModel: UserViewModel) {
     Scaffold(
-        topBar = { CenterAlignedTopAppBar(title = { Text("User List") }) },
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = { Text("User List") },
+                actions = {
+                    Button(onClick = { navController.navigate("groupList") }) {
+                        Text("Groups")
+                    }
+                }
+            )
+        },
         floatingActionButton = {
             FloatingActionButton(onClick = { navController.navigate("addUser") }) {
                 Text("+")
@@ -36,6 +45,7 @@ fun UserListScreen(navController: NavHostController, viewModel: UserViewModel) {
         }
     }
 }
+
 
 @Composable
 fun UserItem(user: User, onEdit: () -> Unit, onDelete: () -> Unit) {

@@ -11,6 +11,9 @@ class UserViewModel : ViewModel() {
     )
     val users: List<User> get() = _users
 
+    private val _groups = mutableStateListOf<Group>()
+    val groups: List<Group> get() = _groups
+
     fun addUser(user: User) {
         _users.add(user)
     }
@@ -24,5 +27,17 @@ class UserViewModel : ViewModel() {
 
     fun deleteUser(userId: Int) {
         _users.removeAll { it.id == userId }
+    }
+
+    fun addGroup(group: Group) {
+        _groups.add(group)
+    }
+
+    fun addUserToGroup(groupId: Int, user: User) {
+        _groups.find { it.id == groupId }?.members?.add(user)
+    }
+
+    fun removeUserFromGroup(groupId: Int, userId: Int) {
+        _groups.find { it.id == groupId }?.members?.removeIf { it.id == userId }
     }
 }
